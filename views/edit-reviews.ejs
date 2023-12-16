@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reviews</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Workout App</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/dashboard">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/body-part">Add Workout</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/workout-history">Workout History</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/gyms">Gyms</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/reviews">Reviews</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div class="container mt-5">
+    <% if (typeof loggedin !== 'undefined' && loggedin) { %>  
+<h2 class="text-center mb-4">Edit Review</h2>
+<form action="/edit-reviews/<%=reviews.review_id%>" method="post">
+    <input type="hidden" name="review_id" value=<%=reviews.review_id%>
+    <fieldset class="mb-4">
+      <legend>Rating:</legend>
+      <input type="radio" name="radio" id="radio1" value=1 style="margin-left: 10px">1
+      <input type="radio" name="radio" id="radio2" value=2 style="margin-left: 10px">2
+      <input type="radio" name="radio" id="radio3" value=3 style="margin-left: 10px">3
+      <input type="radio" name="radio" id="radio4" value=4 style="margin-left: 10px">4
+      <input type="radio" name="radio" id="radio5" value=5 style="margin-left: 10px">5
+    </fieldset>
+
+    <div class="form-group">
+      <label for="comments">Comments:</label>
+      <textarea class="form-control" id="comments" name="comments" rows="4" placeholder="Enter your review here..."></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit Review</button>
+  </form>
+    <% } else { %>
+      <p class="text-danger">You are not logged in. <a href="/">Login here</a>.</p>
+    <% } %>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

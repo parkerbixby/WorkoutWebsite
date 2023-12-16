@@ -1,0 +1,92 @@
+<style>
+  .custom-search-bar {
+    width: 200px;
+  }
+</style>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Workout History</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../resources/styles.css">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/dashboard">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/body-part">Add Workout</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/workout-history">Workout History</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/gyms">Gyms</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/reviews">Review</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container mt-4">
+    <h1 class="text-primary mb-4">Workout History</h1>
+    <form action="/workout-history" method="post" class="mb-3">
+      <select id="filterby" name="filterby">
+        <option value="username">Username</option>
+        <option value="workout">Workout</option>
+      </select>
+      <div class="input-group">
+        <input type="text" class="form-control custom-search-bar" style="width: 150px" placeholder="Search by Workout Name" name="search"  id="search">
+        <div class="input-group-append">
+          <button class="btn btn-primary" type="submit">Search</button>
+        </div>
+      </div>
+
+    <% if (workoutHistory.length > 0) { %>
+      <table class="table table-bordered">
+        <thead class="thead-dark">
+          <tr>
+            <th>User Name</th>
+            <th>Workout Name</th>
+            <th>Reps</th>
+            <th>Sets</th>
+            <th>Weight</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% workoutHistory.forEach(workout => { %>
+            <tr>
+              <td><%= workout.user_name %></td>
+              <td><%= workout.workout_name %></td>
+              <td><%= workout.reps %></td>
+              <td><%= workout.sets %></td>
+              <td><%= workout.weights %></td>
+              
+            </tr>
+          <% }); %>
+        </tbody>
+      </table>
+    <% } else { %>
+      <p class="alert alert-info">No workout history available.</p>
+    <% } %>
+    </form>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>
