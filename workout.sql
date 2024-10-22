@@ -114,9 +114,6 @@ CREATE TABLE user_plan (
 
 
 
--- -- -- -- User Inputs
--- INSERT INTO user (user_name, password) VALUES ('JNasty','123'), ('CMcD','Iluvmom5k!'), ('AnythingYouWantItToBe', 'password'), ('w','w'); 
--- -- -- -- Body Parts for an Exercise to focus
 INSERT INTO body_part (body_part_name) VALUES ('Back'), ('Bicep'), ('Quadricep'), ('Tricep'), ('Chest'), ('Calves'), ('Forearms'), ('Shoulders'), ('Abductors'), ('Hamstrings');
 -- -- -- -- Back Workouts
 INSERT INTO workout (workout_name) VALUES ('Deadlift'), ('Lat Pulldown'), ('Barbell Bent-Over Row'), ('Single-Arm Dumbell Row'), ('Face Pull');
