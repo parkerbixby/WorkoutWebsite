@@ -78,10 +78,6 @@ app.get('/dashboard', (req, res) => {
   }
 });
 
-app.get('/signup', (req, res) => {
-  res.render('signup', { message: '' });
-});
-
 app.post('/signup', (req, res) => {
   const username = req.body.username;
   const password = req.body.password;
